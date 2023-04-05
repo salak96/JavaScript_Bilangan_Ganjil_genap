@@ -32,5 +32,5 @@ btn.addEventListener('click', function () {
   if (isNaN(number)) {
     alert('Input harus angka')
   }
-  result.innerHTML = getTotal(number, sumGenap);
+  result.innerHTML =`Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " +  getTotal(number, sumGenap);
 });
