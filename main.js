@@ -8,9 +8,12 @@ function getTotal(number, callback) {
   }
   return callback(numbers);
 }
+
+
 //   result =`Hasil penjumlahan angka genap dari 1 sampai ${number} adalah ${total}`;
 //4 function sumGenap
-function sumGenap(numbers) {
+//6 arrow function
+  const sumGenap = (numbers) => {
   let sum = 0
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] % 2 === 0) {
@@ -32,5 +35,14 @@ btn.addEventListener('click', function () {
   if (isNaN(number)) {
     alert('Input harus angka')
   }
+  
   result.innerHTML =`Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " +  getTotal(number, sumGenap);
+  //validasi angka negatif
+  if (number === 0) {
+    result.innerHTML = `Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " + 0;
+  }else if (number < 0) {
+    result.innerHTML = `Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " + "Angka negatif tidak dihitung";
+  }
+
 });
+
