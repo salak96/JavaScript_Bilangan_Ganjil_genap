@@ -1,25 +1,35 @@
-// Function ke-2 untuk menjumlahkan angka genap pada array
-const sumEvenNumbers = (arr) => {
-  return arr.filter(num => num % 2 === 0).reduce((acc, curr) => acc + curr, 0);
-};
-
-// Function ke-1 untuk menghasilkan array integer dari 0 hingga n dan menjumlahkan angka genap
-const generateAndSumArray = (n) => {
-  // validasi input agar pastikan n adalah integer positif
-  if (!Number.isInteger(n) || n < 0) {
-    return "Input harus berupa integer positif";
+  //1 function getTotal
+  function getTotal(number, callback) {
+    //3 array argument
+    let numbers = []
+    //2 for loop
+    for (let i = 0; i <= number; i++) {
+      numbers.push(i)
+    }
+    return callback(numbers);
   }
+  //4 function sumGenap
+  function sumGenap(numbers) {
+    let sum = 0
+    for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] % 2 === 0) {
+        sum += numbers[i]
+      }
+    }
+    return sum;
+  }
+  //5 panggil function  getTotal dan sumGenap
+  let total = getTotal(5, sumGenap);
+  console.log(total);
 
-  // menggunakan method Array.from untuk menghasilkan array dengan nilai dari 0 hingga n
-  const arr = Array.from({length: n+1}, (_, i) => i);
-
-  // memanggil function sumEvenNumbers dengan menggunakan method chaining pada array arr
-  const sum = arr.sumEvenNumbers();
-  
-  // mengembalikan hasil jumlah angka genap
-  return sum;
-};
-
-// menambahkan method sumEvenNumbers ke dalam prototype array
-Array.prototype.sumEvenNumbers = sumEvenNumbers;
-
+  //tangkap pakai dom 7
+  let btn = document.querySelector('button')
+  let result = document.querySelector('#result')
+  btn.addEventListener('click', function () {
+    let number = document.querySelector('#inputValue').value
+    //hanya angka soal ke 8
+    if (isNaN(number)) {
+      alert('Input harus angka')
+    }
+    result.innerHTML = getTotal(number, sumGenap)
+  });
