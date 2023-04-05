@@ -12,12 +12,12 @@ function getTotal(number, callback) {
 
 //   result =`Hasil penjumlahan angka genap dari 1 sampai ${number} adalah ${total}`;
 //4 function sumGenap
-//6 arrow function
+//6 a
   const sumGenap = (numbers) => {
   let sum = 0
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 2 === 0) {
-      sum += numbers[i]
+    if (numbers[i] % 2 === 0) document.getElementById("result").value = "Bilangan Genap"; {
+      sum += numbers[i] 
     }
   }
   return sum;
@@ -34,9 +34,10 @@ btn.addEventListener('click', function () {
   //hanya angka soal ke 8
   if (isNaN(number)) {
     alert('Input harus angka')
+  }else{
+    result.innerHTML = `Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " + getTotal(number, sumGenap);
   }
   
-  result.innerHTML =`Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " +  getTotal(number, sumGenap);
   //validasi angka negatif
   if (number === 0) {
     result.innerHTML = `Hasil penjumlahan angka genap dari 1 sampai  ${number}` + " = " + 0;
