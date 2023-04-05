@@ -1,12 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript</title>
+    <title>Generate and Sum Array</title>
 </head>
+
 <body>
-    
-</body>
-</html>
+    <form onsubmit="handleSubmit(event)">
+        <label>
+            Input Integer:
+            <input type="number" id="inputValue" required />
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+
+
+    <script>
+        function getNumbers(number) {
+            let numbers = []
+            for (let i = 0; i <= number; i++) {
+                numbers.push(i)
+            }           
+        }
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            const inputValue = document.getElementById("inputValue").value;
+            const resultElement = document.getElementById("result");
+            const result = generateAndSumArray(parseInt(inputValue));
+            resultElement.innerHTML = `Hasil: ${result}`;
+        };
+
+        // Function dan method-array yang dibutuhkan (copy dari kode di atas)
+        // Function ke-2 untuk menjumlahkan angka genap pada array
+        const sumEvenNumbers = (arr) => {
+            return arr.filter(num => num % 2 === 0).reduce((acc, curr) => acc + curr, 0);
+        };
+        console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+        // Function ke-1 untuk menghasilkan array integer dari 0 hingga n dan menjumlahkan angka genap
+        const generateAndSumArray = (n) => {
+            // validasi input agar pastikan n adalah integer positif
+            if (!Number.isInteger(n) || n < 0) {
+                return "Input harus berupa integer positif";
+            }
+
+            // menggunakan method Array.from untuk menghasilkan array dengan nilai dari 0 hingga n
+            const arr = Array.from({
+                length: n + 1
+            }, (_, i) => i);
+
+            // memanggil function sumEvenNumbers dengan menggunakan method chaining pada array arr
+            const sum = arr.sumEvenNumbers();
+
+            // mengembalikan hasil jumlah angka genap
+            return sum;
+        };
+
+        // menambahkan method sumEvenNumbers ke dalam prototype array
+        Array.prototype.sumEvenNumbers = sumEvenNumbers;
+    </script>
